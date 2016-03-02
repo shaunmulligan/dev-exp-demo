@@ -9,6 +9,18 @@
  */
 
 (function() {
+  var app, express;
+
   console.log('Hello World!');
+
+  express = require('express');
+
+  app = express();
+
+  app.get('/', function(req, res) {
+    return res.send('Hello World!');
+  });
+
+  app.listen(8080);
 
 }).call(this);
