@@ -10,5 +10,7 @@ ignore:
     - src/
     - README.md
     - coffeelint.json
+    - .dockerignore 
+    - .gitignore
 progress: true
 watch: false
