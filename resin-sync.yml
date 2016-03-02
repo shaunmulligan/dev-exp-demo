@@ -1,0 +1,14 @@
+source: ./
+before: 'coffee --output dist --compile src'
+ignore:
+    - .git
+    - Dockerfile
+    - resin-sync.yml
+    - node_modules/
+    - npm-debug.log
+    - .DS_Store
+    - src/
+    - README.md
+    - coffeelint.json
+progress: true
+watch: false

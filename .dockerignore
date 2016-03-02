@@ -1,0 +1,6 @@
+**/*.coffee
+**/*.md
+node_modules/
+lib/
+npm-debug.log
+.DS_Store

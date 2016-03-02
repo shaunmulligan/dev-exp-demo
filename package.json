@@ -1,0 +1,28 @@
+{
+  "name": "dev-exp-demo",
+  "description": "An example of using the resin.io development experience",
+  "version": "0.0.0",
+  "homepage": "https://github.com/shaunmulligan/dev-exp-demo",
+  "bugs": "https://github.com/shaunmulligan/dev-exp-demo/issues",
+  "license": "MIT",
+  "main": "dist/myapp.js",
+  "author": {
+    "name": "Shaun Mulligan",
+    "email": "shaun@resin.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shaunmulligan/dev-exp-demo"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords":[],
+  "dependencies": {},
+  "devDependencies": {
+    "coffee-script": "^1.10.0"
+  },
+  "scripts": {
+		"start": "node dist/myapp.js"
+  }
+}
