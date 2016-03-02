@@ -9,6 +9,6 @@
  */
 
 (function() {
-  console.log('Hello World, systemd is off!');
+  console.log('Hello World!');
 
 }).call(this);
