@@ -14,11 +14,11 @@ gulp.task('compile', function() {
 gulp.task('commit-changes', function () {
   return gulp.src('.')
     .pipe(git.add())
-    .pipe(git.commit('[Prerelease] Bumped version number'));
+    .pipe(git.commit('[Release] to production fleet'));
 });
 
 gulp.task('push-changes', function (cb) {
-  git.push('origin', 'master', cb);
+  git.push('resin', 'master', cb);
 });
 
 gulp.task('release', function (callback) {
