@@ -4,7 +4,23 @@ var git = require('gulp-git');
 var gutil = require('gulp-util');
 var fs = require('fs');
 var coffee = require('gulp-coffee');
-var gitS = require('gulp-git-streamed');
+var exec = require('child_process').exec;
+
+gulp.task('sync', function (cb) {
+  exec('resin sync 380d046', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+})
+
+gulp.task('push', function (cb) {
+  exec('git push resin master', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+})
 
 gulp.task('compile', function() {
   gulp.src('./src/*.coffee')
@@ -15,32 +31,43 @@ gulp.task('compile', function() {
 gulp.task('commit-changes', function () {
   return gulp.src('.')
     .pipe(git.add())
-    .pipe(git.commit('[Release] to production fleet'));
+    .pipe(git.commit('[Release] to fleet'));
 });
 
-gulp.task('push-changes', function (cb) {
+gulp.task('push-to-fleet', function (cb) {
   git.push('resin', 'master', cb);
-});
-
-gulp.task('publish', function() {
-    var version = '1.2.3';
-    var message = 'Release version ' + version;
-    return gulp.src('.')
-        .pipe(gitS.add())
-        .pipe(gitS.commit(message))
-				.pipe(gitS.push('resin', 'master'))
 });
 
 gulp.task('release', function (callback) {
   runSequence(
 		'compile',
     'commit-changes',
-    'push-changes',
+    'push-to-fleet',
     function (error) {
       if (error) {
         console.log(error.message);
       } else {
         console.log('RELEASE FINISHED SUCCESSFULLY');
+      }
+      callback(error);
+    });
+});
+
+// you need a remote called resin-test
+gulp.task('push-to-test-fleet', function (cb) {
+  git.push('resin-test', 'master', cb);
+});
+
+gulp.task('release-test', function (callback) {
+  runSequence(
+		'compile',
+    'commit-changes',
+    'push-to-test-fleet',
+    function (error) {
+      if (error) {
+        console.log(error.message);
+      } else {
+        console.log('RELEASE TO TEST FLEET FINISHED SUCCESSFULLY');
       }
       callback(error);
     });
