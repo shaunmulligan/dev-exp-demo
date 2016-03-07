@@ -14,7 +14,10 @@ gulp.task('compile', function() {
 gulp.task('commit-changes', function () {
   return gulp.src('.')
     .pipe(git.add())
-    .pipe(git.commit('[Release] to production fleet'));
+    .pipe(git.commit('[Release] to production fleet', {emitData:true}))
+		.on('data',function(data) {
+      console.log(data);
+    });
 });
 
 gulp.task('push-changes', function (cb) {
