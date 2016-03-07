@@ -4,6 +4,7 @@ var git = require('gulp-git');
 var gutil = require('gulp-util');
 var fs = require('fs');
 var coffee = require('gulp-coffee');
+var gitS = require('gulp-git-streamed');
 
 gulp.task('compile', function() {
   gulp.src('./src/*.coffee')
@@ -14,14 +15,20 @@ gulp.task('compile', function() {
 gulp.task('commit-changes', function () {
   return gulp.src('.')
     .pipe(git.add())
-    .pipe(git.commit('[Release] to production fleet', {emitData:true}))
-		.on('data',function(data) {
-      console.log(data);
-    });
+    .pipe(git.commit('[Release] to production fleet'));
 });
 
 gulp.task('push-changes', function (cb) {
   git.push('resin', 'master', cb);
+});
+
+gulp.task('publish', function() {
+    var version = '1.2.3';
+    var message = 'Release version ' + version;
+    return gulp.src('.')
+        .pipe(gitS.add())
+        .pipe(gitS.commit(message))
+				.pipe(gitS.push('resin', 'master'))
 });
 
 gulp.task('release', function (callback) {
