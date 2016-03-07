@@ -1,5 +1,5 @@
 source: ./
-before: 'coffee --output dist --compile src'
+before: 'gulp compile'
 ignore:
     - .git
     - Dockerfile
