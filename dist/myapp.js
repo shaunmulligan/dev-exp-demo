@@ -21,6 +21,6 @@
     return res.send('Hello World!');
   });
 
-  app.listen(8080);
+  app.listen(80);
 
 }).call(this);

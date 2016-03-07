@@ -10,7 +10,8 @@ ignore:
     - src/
     - README.md
     - coffeelint.json
-    - .dockerignore 
+    - .dockerignore
     - .gitignore
 progress: true
 watch: false
+port: 8080

@@ -2,6 +2,7 @@ FROM nghiant2710/device-sync:jessie-node-5.3.0
 
 # These env vars enable sync_mode on all devices. To set these only on a
 # specific device, set them from the resin.io dashboard.
+ENV SSH_PORT=8080
 ENV SYNC_MODE=on
 ENV INITSYSTEM=on
 
