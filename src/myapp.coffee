@@ -7,11 +7,10 @@
 ###
 
 console.log 'Starting Server'
-console.log 'hello...again'
 express = require 'express'
 app = express()
 
 app.get '/', (req, res) ->
-  res.send('Hello World...hello sync!')
+  res.send('Hello World')
 
 app.listen(80)

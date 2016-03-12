@@ -10,14 +10,12 @@ var app, express;
 
 console.log('Starting Server');
 
-console.log('hello...again');
-
 express = require('express');
 
 app = express();
 
 app.get('/', function(req, res) {
-  return res.send('Hello World...hello sync!');
+  return res.send('Hello World');
 });
 
 app.listen(80);
