@@ -7,15 +7,7 @@ var coffee = require('gulp-coffee');
 var exec = require('child_process').exec;
 
 gulp.task('sync', function (cb) {
-  exec('resin sync 380d046', function (err, stdout, stderr) {
-    console.log(stdout);
-    console.log(stderr);
-    cb(err);
-  });
-})
-
-gulp.task('push', function (cb) {
-  exec('git push resin master', function (err, stdout, stderr) {
+  exec('resin sync 120ce8f', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);
@@ -48,26 +40,6 @@ gulp.task('release', function (callback) {
         console.log(error.message);
       } else {
         console.log('RELEASE FINISHED SUCCESSFULLY');
-      }
-      callback(error);
-    });
-});
-
-// you need a remote called resin-test
-gulp.task('push-to-test-fleet', function (cb) {
-  git.push('resin-test', 'master', cb);
-});
-
-gulp.task('release-test', function (callback) {
-  runSequence(
-		'compile',
-    'commit-changes',
-    'push-to-test-fleet',
-    function (error) {
-      if (error) {
-        console.log(error.message);
-      } else {
-        console.log('RELEASE TO TEST FLEET FINISHED SUCCESSFULLY');
       }
       callback(error);
     });
