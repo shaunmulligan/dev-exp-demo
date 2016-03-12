@@ -16,9 +16,6 @@ extract_json_value() {
 }
 
 if [ -f /data/commit ]; then
-	echo "commit file doesnt exist yet"
-	curl -X GET --header "Content-Type:application/json" "$RESIN_SUPERVISOR_ADDRESS/v1/device?apikey=$RESIN_SUPERVISOR_API_KEY" | extract_json_value 'commit' > /data/commit
-else
 	mkdir -p /data/.resin-watch
 
 	CURRENT_COMMIT=$(curl -X GET --header "Content-Type:application/json" "$RESIN_SUPERVISOR_ADDRESS/v1/device?apikey=$RESIN_SUPERVISOR_API_KEY" | extract_json_value 'commit')
@@ -32,7 +29,9 @@ else
 		#If the commit is different, then we probaby pushed, so dont copy, but just update the commit hash file.
 		curl -X GET --header "Content-Type:application/json" "$RESIN_SUPERVISOR_ADDRESS/v1/device?apikey=$RESIN_SUPERVISOR_API_KEY" | extract_json_value 'commit' > /data/commit
 	fi
-
+else
+	echo "commit file doesnt exist yet"
+	curl -X GET --header "Content-Type:application/json" "$RESIN_SUPERVISOR_ADDRESS/v1/device?apikey=$RESIN_SUPERVISOR_API_KEY" | extract_json_value 'commit' > /data/commit
 fi
 
 
