@@ -7,6 +7,7 @@
 ###
 
 console.log 'Starting Server'
+console.log 'hello'
 express = require 'express'
 app = express()
 

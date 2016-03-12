@@ -41,3 +41,7 @@ COPY . ./
 
 # Start you node app, "start" defined in the package.json scripts section.
 CMD [ "npm", "start"]
+
+COPY entry.sh /usr/bin/entry.sh    
+COPY setup-ssh.sh /usr/lib/resin/setup-ssh.sh
+COPY setup-resin-sync.sh /usr/lib/resin/setup-resin-sync.sh
