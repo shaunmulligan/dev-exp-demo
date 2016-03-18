@@ -8,7 +8,7 @@
  */
 var app, express;
 
-console.log('Starting Server');
+console.log('Starting Server.');
 
 express = require('express');
 

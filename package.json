@@ -1,7 +1,7 @@
 {
   "name": "dev-exp-demo",
   "description": "An example of using the resin.io development experience",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "https://github.com/shaunmulligan/dev-exp-demo",
   "bugs": "https://github.com/shaunmulligan/dev-exp-demo/issues",
   "license": "MIT",

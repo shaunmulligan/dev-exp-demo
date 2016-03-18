@@ -6,7 +6,7 @@
  Licensed under the MIT license.
 ###
 
-console.log 'Starting Server'
+console.log 'Starting Server.'
 express = require 'express'
 app = express()
 
